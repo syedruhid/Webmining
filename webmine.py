@@ -14,7 +14,26 @@ print( '\n' )
 
  
    
+import urllib
+import urllib.request  
+import urllib.parse 
+import re
 
+url='https://en.wikipedia.org' 
+req = urllib.request.Request(url)
+resp = urllib.request.urlopen(url) 
+web_page_respData = resp.read() 
+print('Webpage response' , web_page_respData)
+
+web_page_paragraphs = re.findall( r'<p>(.*?)</p>' ,str(web_page_respData))
+
+eb_string = '' 
+for para in web_page_paragraphs:
+    
+    web_string = web_string + para 
+    print('web_string',web_string)
+
+    
 import nltk
 nltk.download('punkt') 
 import re
